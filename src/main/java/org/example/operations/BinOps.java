@@ -38,10 +38,17 @@ public class BinOps implements Operations {
         return sum.length() % 4 == 0 ? sum : "0".repeat(4 - sum.length() % 4) + sum;
     }
 
+    /**
+     * Проверка параметров на валидность.
+     *
+     * @param a бинарное число в строковом выражении
+     * @param b бинарное число в строковом выражении
+     * @exception IllegalArgumentException если параметры не валидны.
+     */
     protected void checkArgs(String a, String b) {
-        if (a == null || a.isEmpty() || a.replaceAll("[0-1]", "").length() != 0) {
+        if (a == null || a.isEmpty() || a.replaceAll("[01]", "").length() != 0) {
             throw new IllegalArgumentException("Аргумент a не бинарное число: a = '" + a + "'");
-        } else if (b == null || b.isEmpty() || b.replaceAll("[0-1]", "").length() != 0) {
+        } else if (b == null || b.isEmpty() || b.replaceAll("[01]", "").length() != 0) {
             throw new IllegalArgumentException("Аргумент b не бинарное число: b = '" + b + "'");
         }
     }
